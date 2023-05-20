@@ -62,8 +62,10 @@ public class DataService {
 //increment the "qty" field by one, every fifth minute of every hour
     @Scheduled(cron = "0 */5 * * * *") // Run every 5 minutes
     public void incrementQty() {
+        int qty=0;
         Data data = dataRepository.findById(1L).get();
-        data.setQty(data.getQty() + 1);
+        data.setQty(data.getQty());
+        qty++;
         dataRepository.save(data);
     }
     }
