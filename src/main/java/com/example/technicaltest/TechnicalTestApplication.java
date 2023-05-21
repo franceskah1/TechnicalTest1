@@ -19,17 +19,6 @@ public class TechnicalTestApplication {
         return new CronTrigger("0 */5 * * * *");
     }
 
-    @Bean
-    public GroupedOpenApi groupedOpenApi() {
-        return GroupedOpenApi.builder()
-                .group("api")
-                .pathsToMatch("/v1/**")
-                .build();
-    }
-
-
-
-
 }
 
 
