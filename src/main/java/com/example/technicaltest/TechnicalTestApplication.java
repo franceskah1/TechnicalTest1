@@ -1,11 +1,13 @@
 package com.example.technicaltest;
+import org.springdoc.core.GroupedOpenApi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.support.CronTrigger;
 
 @SpringBootApplication
-
+@EnableScheduling
 public class TechnicalTestApplication {
 
     public static void main(String[] args) {
@@ -16,6 +18,18 @@ public class TechnicalTestApplication {
     public CronTrigger cronTrigger() {
         return new CronTrigger("0 */5 * * * *");
     }
+
+    @Bean
+    public GroupedOpenApi groupedOpenApi() {
+        return GroupedOpenApi.builder()
+                .group("api")
+                .pathsToMatch("/v1/**")
+                .build();
+    }
+
+
+
+
 }
 
 
