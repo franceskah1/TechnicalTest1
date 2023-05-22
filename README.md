@@ -21,3 +21,5 @@ Please use OpenAPI/Swagger annotations to document almost the v1/data INSERT end
 
 Plus, optional :
 Include a method in your microservice that increments the "qty" field by one, every fifth minute of every hour, or simply describe how you would do it.
+
+Swagger URL http://localhost:8081/technicaltest/swagger-ui/index.html
