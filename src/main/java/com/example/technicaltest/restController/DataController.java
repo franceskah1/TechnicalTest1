@@ -1,9 +1,6 @@
 package com.example.technicaltest.restController;
-import com.example.technicaltest.exception.NotFoundException;
 import com.example.technicaltest.model.Data;
-import com.example.technicaltest.repository.DataRepository;
 import com.example.technicaltest.service.DataService;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

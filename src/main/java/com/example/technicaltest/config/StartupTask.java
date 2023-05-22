@@ -1,5 +1,4 @@
 package com.example.technicaltest.config;
-
 import com.example.technicaltest.service.DataService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
