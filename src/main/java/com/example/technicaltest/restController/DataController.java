@@ -14,6 +14,7 @@ import java.util.Optional;
 @RequestMapping("/v1/data")
 public class DataController {
     private final DataService dataService;
+
     public DataController(DataService dataService) {
         this.dataService = dataService;
 
@@ -31,25 +32,26 @@ public class DataController {
     }
 
 
-        @PutMapping( "/{id}")
-        public ResponseEntity<?> updateById( @PathVariable Long id,@RequestBody Data data) {
-            try {
-                Optional<?> updatedDataOptional = dataService.updateData1(id, data);
-                return updatedDataOptional
-                        .map(ResponseEntity::ok)
-                        .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-            } catch (Exception e) {
-                e.printStackTrace();
-                return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
-            }
-
-        }
-        @GetMapping("/{id}")
-        public ResponseEntity<Data> getDataById(@PathVariable String id) {
-            Optional<Data> dataOptional = dataService.getDataById(id);
-            return dataOptional
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateById(@PathVariable Long id, @RequestBody Data data) {
+        try {
+            Optional<?> updatedDataOptional = dataService.updateData1(id, data);
+            return updatedDataOptional
                     .map(ResponseEntity::ok)
                     .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+        }
+
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Data> getDataById(@PathVariable String id) {
+        Optional<Data> dataOptional = dataService.getDataById(id);
+        return dataOptional
+                .map(ResponseEntity::ok)
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/{id}")
@@ -62,17 +64,20 @@ public class DataController {
         }
     }
 
-//    @GetMapping
-//    public ResponseEntity<?> incrementQty(){
-//        try {
-//            dataService.incrementQty();;
-//            return new ResponseEntity<>(HttpStatus.OK);
-//        }  catch (Exception e) {
-//        e.printStackTrace();
-//        return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
-//    }
-//
-//    }
+
+//used just for testing
+    @GetMapping
+    public ResponseEntity<?> incrementQty() {
+        try {
+            dataService.incrementQty();
+            ;
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+
+        }
+    }
 }
 
     
